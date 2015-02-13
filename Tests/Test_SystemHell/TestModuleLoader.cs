@@ -56,7 +56,7 @@ namespace Test_SystemHell
                 Assert.IsTrue(result.Modules.Any(a => a.Actif));
                 Assert.IsTrue(result.Modules.Any(a => a.Assembly == "TestDaemon.dll"));
             }
-        }
+        }        
 
         [TestMethod]
         public void TestLoadModuleFromXmlFile()
@@ -93,6 +93,27 @@ namespace Test_SystemHell
                 Assert.AreEqual(1, result.Count);
                 Assert.IsNotNull(result[0].Configuration);
                 Assert.IsInstanceOfType(result[0].Configuration, typeof(TestDaemonConfiguration1));                
+            }
+        }
+
+        [TestMethod]
+        public void TestLoadModuleFromXmlFileWithInjectedConfigurationComposition()
+        {
+            using (var xml = new XmlCreator())
+            {
+                var modules = new SystemHellModules();
+                var d1 = new Daemon() { Name = "Test DAEMON", Actif = true, Assembly = "Test_SystemHell", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithComposedConfig" };
+
+                d1.Configuration = new TestDaemonConfiguration3();
+
+                modules.Modules.Add(d1);
+
+                ModuleLoader.SaveModulesXmlFile(xml.XmlFilePath, modules);
+                var result = ModuleLoader.GetAllDaemon(xml.XmlFilePath);
+
+                Assert.AreEqual(1, result.Count);
+                Assert.IsNotNull(result[0].Configuration);
+                Assert.IsInstanceOfType(result[0].Configuration, typeof(TestDaemonConfiguration3));
             }
         }
 

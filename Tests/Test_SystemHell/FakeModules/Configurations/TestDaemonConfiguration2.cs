@@ -8,5 +8,5 @@ namespace Test_SystemHell.FakeModules.Configurations
     {
         public string ParamX1 { get; set; }
         public int ParamX2 { get; set; }
-    }
+    }   
 }

@@ -61,6 +61,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FakeModules\Configurations\FakeConfiguration.cs" />
+    <Compile Include="FakeModules\Configurations\TestDaemonConfiguration3.cs" />
+    <Compile Include="FakeModules\FakeModuleWithComposedConfig.cs" />
     <Compile Include="FakeModules\FakeModuleWithConfig.cs" />
     <Compile Include="FakeModules\FakeModuleWithNothing.cs" />
     <Compile Include="FakeModules\FakeModuleEvent.cs" />
