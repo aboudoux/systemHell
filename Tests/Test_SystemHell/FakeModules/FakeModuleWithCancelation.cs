@@ -8,6 +8,7 @@ namespace Test_SystemHell.FakeModules
     {
         public override void Start(CancellationToken cancellationToken)
         {
+            DaemonStarted = true;
             while (!cancellationToken.IsCancellationRequested) {
                 Thread.Sleep(100);
             }

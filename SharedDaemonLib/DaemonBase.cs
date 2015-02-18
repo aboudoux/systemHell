@@ -32,7 +32,10 @@ namespace SharedDaemonLib
                     throw new Exception("Vous ne pouvez pas défini un objet de configuration de type " + value.GetType() + " car le démon attend une configuration de type " + typeof(T));
                 _config = value;
             }
-        }        
+        }
+
+        public bool DaemonStarted { get; protected set; }
+
         protected T Configuration
         {
             get { return (this as IDaemonModule).Configuration as T; }

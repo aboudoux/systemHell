@@ -12,6 +12,7 @@ namespace Pop3Daemon
     {
         public override void Start(CancellationToken cancellationToken)
         {
+            DaemonStarted = true;
             do {
                 try {
 

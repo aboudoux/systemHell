@@ -23,6 +23,7 @@ namespace PublishDaemon
         public override void Start(CancellationToken cancellationToken)
         {
             do {
+                DaemonStarted = true;
                 IBuildDetail lastBuild = _publishService.GetLastBuild(PublishConfiguration.Collection,PublishConfiguration.ProjectName,PublishConfiguration.LastBuildTime);
                 if (_publishService.CanPublish(lastBuild, PublishConfiguration.LastBuildVersion)) {
                     try {

@@ -11,6 +11,7 @@ namespace Test_SystemHell.FakeModules
 
         public override void Start(CancellationToken cancellationToken)
         {
+            DaemonStarted = true;
             cancellationToken.WaitHandle.WaitOne();            
             Trace.Write("finish");
         }       

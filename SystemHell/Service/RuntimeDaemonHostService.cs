@@ -27,9 +27,9 @@ namespace SystemHell.Service
             if (modules == null) throw new ArgumentNullException("modules");
 
             modules.ForEach(a => _allModules.Add(new Tuple<IDaemonModule, Task>(a, Task.Factory.StartNew(()=>a.Start(_cancellationTokenSource.Token), _cancellationTokenSource.Token))));
-            
-            _allModules.ForEach(a=>Trace.WriteLine(a.Item2.Status));
-            while (_allModules.Any(a => a.Item2.IsFaulted == false && a.Item2.IsCompleted == false && a.Item2.Status != TaskStatus.Running))                           
+                        
+            _allModules.ForEach(a=>Trace.WriteLine(a.Item2.Status));            
+            while (_allModules.Any(a =>a.Item2.IsFaulted == false && a.Item1.DaemonStarted == false && a.Item2.IsCompleted == false))                           
                 Thread.Sleep(500);
 
             var exceptions = new List<Exception>();

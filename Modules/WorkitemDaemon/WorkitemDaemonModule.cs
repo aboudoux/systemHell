@@ -17,6 +17,7 @@ namespace WorkitemDaemon
         {   
             WriteTrace("Started.");
             StartTfsConnectionLoop(cancellationToken);
+            DaemonStarted = true;
  
             do {
                 if(_client.IsConnected && !cancellationToken.IsCancellationRequested)

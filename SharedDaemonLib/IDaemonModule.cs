@@ -10,6 +10,7 @@ namespace SharedDaemonLib
         void Start(CancellationToken cancellationToken);
         Type ConfigurationType { get; }
         object Configuration { get; set; }
+        bool DaemonStarted { get; }
     }
 
     public interface IDaemonModuleConfiguration

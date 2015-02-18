@@ -54,7 +54,7 @@ namespace Test_SystemHell
             Assert.IsTrue(FakeModule1.Item2.Status == TaskStatus.Running);
 
         }
-
+        
         [TestMethod]
         public void TestStartAndStopFakeModuleWithCancelation()
         {
@@ -93,19 +93,16 @@ namespace Test_SystemHell
             Assert.IsTrue(FakeModule1.Item2.IsCompleted);
         }
 
-        [TestMethod]        
+        [TestMethod]
+        [ExpectedException(typeof(StartModuleException))]
         public void TestStartAndStopFakeModuleThrowException()
         {
             // Arrange
             RuntimeDaemonHostService hostService = new RuntimeDaemonHostService(stopTimeout: _stopTimeout);
             var module = new FakeModuleThrowException();
 
-            // Act
-            try {
-                hostService.OnStart(new List<IDaemonModule>() { module });            
-            }
-            catch (StartModuleException) {                                
-            }            
+            // Act            
+            hostService.OnStart(new List<IDaemonModule>() { module });            
         }       
     }
 }

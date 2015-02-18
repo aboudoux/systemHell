@@ -9,7 +9,8 @@ namespace Test_SystemHell.FakeModules
     {
         public override void Start(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Thread.Sleep(100);            
+            throw new NotImplementedException();            
         }       
     }
 }
