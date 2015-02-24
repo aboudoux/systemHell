@@ -83,7 +83,7 @@ namespace Test_WorkitemDaemon
             var client = new TfsClient();
             try
             {
-                client.Connect("https://actimedia.visualstudio.com/DefaultCollection/", "aurelien69100", "!Acti2007!", "ReconnaissanceVocale");
+                client.Connect("https://actimedia.visualstudio.com/DefaultCollection/", "aurelien69100", "", "ReconnaissanceVocale");
                 var workItem = new InternalWorkItem(EnumWorkitemType.Bug, "Test attachement", "Voici un test avec un fichier attaché", "1", new List<string>() { Path.Combine(DirectoryHelper.CurrentDirectory, "ressources", "attachement1.bmp") });
                 var id = client.Send(workItem);
                 Assert.IsTrue(id > 0);                

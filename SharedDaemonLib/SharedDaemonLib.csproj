@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AS_ConfigFile.cs" />
     <Compile Include="Daemon.cs" />
     <Compile Include="DaemonBase.cs" />
     <Compile Include="DaemonException.cs" />

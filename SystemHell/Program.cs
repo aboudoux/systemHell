@@ -1,4 +1,5 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.ServiceProcess;
 using SystemHell.Service;
 
 namespace SystemHell
@@ -15,6 +16,9 @@ namespace SystemHell
 				new DaemonHost(new RuntimeDaemonHostService()),  
 			};
             ServiceBase.Run(ServicesToRun);
+
+            //AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;            
         }
+        
     }
 }

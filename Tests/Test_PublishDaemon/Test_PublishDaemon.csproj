@@ -68,10 +68,6 @@
     <Compile Include="TestConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\PublishDaemon\PublishDaemon.csproj">
-      <Project>{65e950d9-1f16-40e1-8034-f0b8f3955350}</Project>
-      <Name>PublishDaemon</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SharedDaemonLib\SharedDaemonLib.csproj">
       <Project>{dca2f395-d9f2-4ab6-b089-036ac982b701}</Project>
       <Name>SharedDaemonLib</Name>
