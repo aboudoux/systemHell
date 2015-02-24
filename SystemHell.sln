@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Daemons", "Daemons", "{990D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDaemonLib", "SharedDaemonLib\SharedDaemonLib.csproj", "{DCA2F395-D9F2-4AB6-B089-036AC982B701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkitemDaemon", "Modules\WorkitemDaemon\WorkitemDaemon.csproj", "{E2E2533B-EC68-4BC9-A5D7-03EE1DD90EED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkitemDaemon", "Daemons\WorkitemDaemon\WorkitemDaemon.csproj", "{E2E2533B-EC68-4BC9-A5D7-03EE1DD90EED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pop3Daemon", "Modules\Pop3Daemon\Pop3Daemon.csproj", "{54975286-FCBD-45EE-BB91-F46478273031}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pop3Daemon", "Daemons\Pop3Daemon\Pop3Daemon.csproj", "{54975286-FCBD-45EE-BB91-F46478273031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Pop3Daemon", "Test_Pop3Daemon\Test_Pop3Daemon.csproj", "{15639BDF-176C-4FEC-835F-4E6B5E56C810}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Pop3Daemon", "Daemons\Tests\Test_Pop3Daemon\Test_Pop3Daemon.csproj", "{15639BDF-176C-4FEC-835F-4E6B5E56C810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_WorkitemDaemon", "Test_WorkitemDaemon\Test_WorkitemDaemon.csproj", "{849FADB2-7AF3-40D5-A241-BCC4347DEF7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_WorkitemDaemon", "Daemons\Tests\Test_WorkitemDaemon\Test_WorkitemDaemon.csproj", "{849FADB2-7AF3-40D5-A241-BCC4347DEF7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6EC9820E-66D7-4339-BFA3-E7EBD674EE55}"
 EndProject

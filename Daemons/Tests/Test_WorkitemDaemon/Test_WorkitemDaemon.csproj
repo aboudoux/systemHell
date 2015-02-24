@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{15639BDF-176C-4FEC-835F-4E6B5E56C810}</ProjectGuid>
+    <ProjectGuid>{849FADB2-7AF3-40D5-A241-BCC4347DEF7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test_Pop3Daemon</RootNamespace>
-    <AssemblyName>Test_Pop3Daemon</AssemblyName>
+    <RootNamespace>Test_WorkitemDaemon</RootNamespace>
+    <AssemblyName>Test_WorkitemDaemon</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,18 +58,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestPop3Daemon.cs" />
+    <Compile Include="TestTfsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Modules\Pop3Daemon\Pop3Daemon.csproj">
-      <Project>{54975286-fcbd-45ee-bb91-f46478273031}</Project>
-      <Name>Pop3Daemon</Name>
+    <ProjectReference Include="..\..\WorkitemDaemon\WorkitemDaemon.csproj">
+      <Project>{e2e2533b-ec68-4bc9-a5d7-03ee1dd90eed}</Project>
+      <Name>WorkitemDaemon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SharedDaemonLib\SharedDaemonLib.csproj">
-      <Project>{DCA2F395-D9F2-4AB6-B089-036AC982B701}</Project>
+    <ProjectReference Include="..\..\..\SharedDaemonLib\SharedDaemonLib.csproj">
+      <Project>{dca2f395-d9f2-4ab6-b089-036ac982b701}</Project>
       <Name>SharedDaemonLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ressources\attachement1.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
