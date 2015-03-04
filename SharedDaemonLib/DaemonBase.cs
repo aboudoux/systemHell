@@ -15,7 +15,10 @@ namespace SharedDaemonLib
         }
 
         public abstract void Start(CancellationToken cancellationToken);
-        
+        public virtual void OnCustomCommand(int command)
+        {            
+        }
+
         public Type ConfigurationType { get { return typeof (T); } }
         private object _config;
         object IDaemonModule.Configuration

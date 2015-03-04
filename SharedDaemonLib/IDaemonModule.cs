@@ -8,6 +8,7 @@ namespace SharedDaemonLib
     {
         string ModuleName { get; set; }
         void Start(CancellationToken cancellationToken);
+        void OnCustomCommand(int command);
         Type ConfigurationType { get; }
         object Configuration { get; set; }
         bool DaemonStarted { get; }

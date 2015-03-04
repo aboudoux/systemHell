@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DaemonDuplicateNameException.cs" />
+    <Compile Include="Exceptions\DaemonEmptyNameException.cs" />
     <Compile Include="Exceptions\DaemonFileGeneratedException.cs" />
+    <Compile Include="Exceptions\DaemonHostException.cs" />
     <Compile Include="Exceptions\ModuleFileEmptyException.cs" />
     <Compile Include="Exceptions\ModuleFileNotFoundException.cs" />
     <Compile Include="Exceptions\ModuleLoaderException.cs" />

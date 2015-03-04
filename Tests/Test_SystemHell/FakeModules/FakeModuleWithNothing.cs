@@ -8,6 +8,6 @@ namespace Test_SystemHell.FakeModules
     {
         public override void Start(CancellationToken cancellationToken)
         {            
-        }      
+        }        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using SystemHell.Service;
 using SharedDaemonLib;
@@ -16,6 +17,14 @@ namespace Test_SystemHell
         {
         }
 
-        public List<Tuple<IDaemonModule, Task>> LoadedModules { get; private set; }
+        public void OnCustomCommand(int command)
+        {            
+        }
+
+        public void ReloadDaemons(List<IDaemonModule> modules)
+        {            
+        }
+
+        public List<Tuple<IDaemonModule, Task, CancellationTokenSource>> LoadedModules { get; private set; }
     }
 }

@@ -117,7 +117,6 @@ namespace SystemHell
             }            
         }
         
-
         public static void SaveModulesXmlFile(string xmlFilePath, SystemHellModules serializableObject)
         {
             var serialiseur = new XmlSerializer(typeof(SystemHellModules), serializableObject.GetConfigTypes());            

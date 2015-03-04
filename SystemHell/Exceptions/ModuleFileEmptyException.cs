@@ -6,7 +6,7 @@ namespace SystemHell.Exceptions
     public class ModuleFileEmptyException : ModuleLoaderException
     {
         public ModuleFileEmptyException(string filePath)
-            : base("Le fichier '" + filePath + "' permettant de charger les modules est vide.")
+            : base("the '" + filePath + "' file to load modules is empty.")
         {
         }
     }

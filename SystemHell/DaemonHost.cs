@@ -22,7 +22,7 @@ namespace SystemHell
 
         protected override void OnStart(string[] args)
         {
-            Trace.WriteLine("Démarrage du service SystemHell");
+            Trace.WriteLine("Starting SystemHell");
 
             var moduleConfigfile = DirectoryHelper.DaemonFilePath;
             if (File.Exists(moduleConfigfile)) {
@@ -37,9 +37,24 @@ namespace SystemHell
 
         protected override void OnStop()
         {
-            Trace.WriteLine("Arrêt du service SystemHell");
+            Trace.WriteLine("Stopping SystemHell");
             _service.OnStop();
             base.OnStop();
+        }
+
+        protected override void OnCustomCommand(int command)
+        {
+            if (command == 666) {
+                Trace.WriteLine("[SystemHell] Reloading daemons");
+                var moduleConfigfile = DirectoryHelper.DaemonFilePath;
+                if(!File.Exists(moduleConfigfile))
+                    throw new Exception("Configuration file does not exist.");
+                _service.ReloadDaemons(ModuleLoader.GetAllDaemon(moduleConfigfile));
+            }
+            else 
+                _service.OnCustomCommand(command);
+
+            base.OnCustomCommand(command);
         }
 
         private void InitializeComponent()
