@@ -147,5 +147,45 @@ namespace Test_SystemHell
                 Assert.AreEqual(1, result.Count);                
             }
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(DaemonEmptyNameException))]
+        public void TestLoadModulesWithNoName()
+        {
+            using (var xml = new XmlCreator())
+            {
+                var modules = new SystemHellModules();
+                var d1 = new Daemon() { Name = "A", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };
+                var d2 = new Daemon() { Name = "B", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };
+                var d3 = new Daemon() { Name = "", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };                
+
+                modules.Modules.Add(d1);
+                modules.Modules.Add(d2);
+                modules.Modules.Add(d3);
+
+                ModuleLoader.SaveModulesXmlFile(xml.XmlFilePath, modules);
+                var result = ModuleLoader.GetAllDaemon(xml.XmlFilePath);                
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DaemonDuplicateNameException))]
+        public void TestLoadModulesWithSameName()
+        {
+            using (var xml = new XmlCreator())
+            {
+                var modules = new SystemHellModules();
+                var d1 = new Daemon() { Name = "A", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };
+                var d2 = new Daemon() { Name = "B", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };
+                var d3 = new Daemon() { Name = "A", Actif = true, Assembly = "Test_SystemHell, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ModuleType = "Test_SystemHell.FakeModules.FakeModuleWithNothing" };
+
+                modules.Modules.Add(d1);
+                modules.Modules.Add(d2);
+                modules.Modules.Add(d3);
+
+                ModuleLoader.SaveModulesXmlFile(xml.XmlFilePath, modules);
+                var result = ModuleLoader.GetAllDaemon(xml.XmlFilePath);
+            }
+        }
     }
 }

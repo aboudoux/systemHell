@@ -77,7 +77,6 @@
     <Compile Include="TestSystemHell.cs" />
     <Compile Include="TestModuleLoader.cs" />
     <Compile Include="ToolBox\XmlCreator.cs" />
-    <Compile Include="TestApprentissage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SharedDaemonLib\SharedDaemonLib.csproj">

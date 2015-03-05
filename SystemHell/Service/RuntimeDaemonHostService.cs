@@ -37,7 +37,7 @@ namespace SystemHell.Service
             });
                         
             while (_allModules.Values.Any(a =>a.Item2.IsFaulted == false && a.Item1.DaemonStarted == false && a.Item2.IsCompleted == false))                           
-                Thread.Sleep(500);
+                Thread.Sleep(100);
 
             var exceptions = new List<Exception>();
             foreach (var errors in _allModules.Values.Where(a => a.Item2.IsFaulted)) {                

@@ -24,4 +24,5 @@ namespace SystemHell.Exceptions
         {
         }
     }
+    
 }

@@ -158,7 +158,7 @@ namespace Test_SystemHell
            
             var daemonModules = new List<IDaemonModule>();
             var r = new Random(DateTime.Now.Millisecond);
-            var num = r.Next(30);
+            var num = r.Next(10);
             
             for (int i = 0; i < num; i++) {
                 var module = new FakeModuleWithCustomCommand();
@@ -206,7 +206,19 @@ namespace Test_SystemHell
         [TestMethod]
         public void TestReloadUpdateModule()
         {
+            var hostService = new RuntimeDaemonHostService(stopTimeout: _stopTimeout);
+            var modules = new List<IDaemonModule>();
 
+            modules.Add(new FakeModuleWithNothing() { ModuleName = "D1" });            
+
+            hostService.OnStart(modules);
+
+            modules.Clear();
+            modules.Add(new FakeModuleWithNothing() { ModuleName = "D2" });                        
+            
+            hostService.ReloadDaemons(modules);
+            Assert.AreEqual((hostService as IDaemonHostService).LoadedModules.Count, 1);
+            Assert.AreEqual((hostService as IDaemonHostService).LoadedModules[0].Item1.ModuleName, "D2");
         }
     }
 }

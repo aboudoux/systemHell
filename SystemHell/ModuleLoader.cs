@@ -17,7 +17,7 @@ namespace SystemHell
             if (string.IsNullOrEmpty(xmlFilePath) || !File.Exists(xmlFilePath))
                 throw new ModuleFileNotFoundException(xmlFilePath);
 
-            var result = new List<IDaemonModule>();
+            var result = new Dictionary<string, IDaemonModule>();
             
             var modules = LoadModuleXmlFile(xmlFilePath);
             foreach (var daemonModule in modules.Modules.Where(a=>a.Actif)) {
@@ -32,11 +32,17 @@ namespace SystemHell
                 if( instance == null )
                     throw new Exception("Impossible de créer une instance du module " + daemonModule.Name);
 
+                if(string.IsNullOrWhiteSpace(daemonModule.Name))
+                    throw new DaemonEmptyNameException();
+
                 instance.ModuleName = daemonModule.Name;
                 instance.Configuration = DeserializeConfiguration(daemonModule.Configuration as XmlNode[], assembly);
-                result.Add(instance);
+
+                if( result.ContainsKey(instance.ModuleName) ) 
+                    throw new DaemonDuplicateNameException(instance.ModuleName);
+                result.Add(instance.ModuleName, instance);
             }
-            return result;
+            return result.Values.ToList();
         }
 
         public static void GenerateConfigFileForAllModule(string[] assemblyFilesPath, string xmlFilePath)
@@ -120,7 +126,7 @@ namespace SystemHell
         public static void SaveModulesXmlFile(string xmlFilePath, SystemHellModules serializableObject)
         {
             var serialiseur = new XmlSerializer(typeof(SystemHellModules), serializableObject.GetConfigTypes());            
-            XmlWriter xmlWriter = XmlWriter.Create(xmlFilePath, new XmlWriterSettings { CheckCharacters = true, Indent = true });            
+            XmlWriter xmlWriter = XmlWriter.Create(xmlFilePath, new XmlWriterSettings { CheckCharacters = true, Indent = true});            
             serialiseur.Serialize(xmlWriter, serializableObject);
             xmlWriter.Close();
         }
