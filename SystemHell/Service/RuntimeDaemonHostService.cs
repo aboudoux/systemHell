@@ -33,6 +33,7 @@ namespace SystemHell.Service
                 if( _allModules.ContainsKey(a.ModuleName) )
                     throw new DaemonDuplicateNameException(a.ModuleName);
                 var cancellationTokenSource = new CancellationTokenSource();
+                Tracer.Write(a.ModuleName, "Starting Daemon...");
                 _allModules.Add(a.ModuleName, new Tuple<IDaemonModule, Task, CancellationTokenSource>(a, Task.Factory.StartNew(() => a.Start(cancellationTokenSource.Token), cancellationTokenSource.Token), cancellationTokenSource));
             });
                         
@@ -49,7 +50,7 @@ namespace SystemHell.Service
         }
 
         public void OnStop()
-        {
+        {            
             ((IDaemonHostService)this).LoadedModules.ForEach(a => a.Item3.Cancel());
             Task.WaitAll(_allModules.Values.Select(a => a.Item2).ToArray(), _stopTimeout);                                   
         }
